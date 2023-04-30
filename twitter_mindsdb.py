@@ -26,7 +26,6 @@ MODEL_NAME=os.environ['model']
 def predict_from_mindsdb(df: pd.DataFrame):
     server=mdb.connect(login=MDB_EMAIL,password=MDB_PWD)
     model=server.get_project('mindsdb').get_model(MODEL_NAME)
-    predict_df=model.predict(df)
     pred_df = pd.DataFrame(columns=['text'])
     pred_df['text'] = df['text']
     try: 
@@ -59,6 +58,6 @@ if st.button('Predict emotions'):
         st.write(f'Predicting emotions for {len(tweets)} tweets from @{username}...')
         df2 = predict_from_mindsdb(df)
         df = pd.concat([df, df2], axis=1)
-        st.write(f'Emotions predicted: {emotions}')
+        st.write(f'Emotions predicted: {df}')
     except Exception as e:
         st.error(f'Error fetching tweets: {e}, perhaps a wrong user name')
