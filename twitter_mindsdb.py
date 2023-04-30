@@ -6,10 +6,6 @@ import pandas as pd
 import os
 
 
-# Set up Tweepy API authentication
-# auth = tweepy.OAuthHandler("qgMcGcUTzTzAmPRmLeVEZAQYQ","Eb6xcOHKYp7di4Oqm77RxAzswQC9MxwLMzcJwvBYlsV5T1B00p")
-# auth.set_access_token("1404756026256093186-FIeiNowilvEY0zID49RuqVeVkSrBlg", "ZyVB3uRQOVLDkvk5QDVmGZikXDI7RGiFUwNSinDJip0sl")
-
 consumer_key = os.environ['consumer_key']
 consumer_secret = os.environ['consumer_secret']
 access_token = os.environ['access_token']
@@ -37,7 +33,7 @@ def predict_from_mindsdb(df: pd.DataFrame):
 
 # Define Streamlit app
 st.title('Twitter Emotion Predictor - Powered by MindsDB')
-st.write('Enter a Twitter username and click the button to predict the emotions of the user\'s last 10 tweets')
+st.write('Enter a Twitter username and click the button to predict the emotions of the user\'s the latest 10 tweets')
 
 # Get input username from user
 username = st.text_input('Enter a Twitter username')
@@ -56,9 +52,11 @@ if st.button('Predict emotions'):
                 'lang': [tweet.lang for tweet in tweets],
                 'source': [tweet.source for tweet in tweets]
             })
-        st.write(f'Predicting emotions for {len(tweets)} tweets from @{username}...')
+        st.write(f'Predicting emotions for the latest {len(tweets)} tweets from @{username}...')
         df2 = predict_from_mindsdb(df)
-        df = pd.concat([df, df2], axis=1)  
+        df = pd.concat([df, df2], axis=1)
+        df = df.rename(columns={'text': 'tweet','sentiment': 'tweet sentiment'}) 
+        df = df['text','sentiment']
         st.dataframe(df) 
     except Exception as e:
         st.error(f'Error fetching tweets: {e}, perhaps a wrong user name')
