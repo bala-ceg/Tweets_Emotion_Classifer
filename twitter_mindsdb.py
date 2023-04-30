@@ -60,5 +60,5 @@ if st.button('Predict emotions'):
         df2 = predict_from_mindsdb(df)
         df = pd.concat([df, df2], axis=1)
         st.write(f'Emotions predicted: {emotions}')
-    except tweepy.error.TweepError as e:
+    except Exception as e:
         st.error(f'Error fetching tweets: {e}, perhaps a wrong user name')
