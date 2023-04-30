@@ -29,7 +29,7 @@ def predict_from_mindsdb(df: pd.DataFrame):
     pred_df = pd.DataFrame(columns=['text'])
     pred_df['text'] = df['text']
     try: 
-    ret_df = model.predict(pred_df)
+        ret_df = model.predict(pred_df)
     except Exception as e:
         print('Not able to generate predictions at the moment')
     return ret_df
