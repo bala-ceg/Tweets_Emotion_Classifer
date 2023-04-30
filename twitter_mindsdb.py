@@ -42,7 +42,6 @@ username = st.text_input('Enter a Twitter username')
 if st.button('Predict emotions'):
     try:
         tweets = api.user_timeline(screen_name=username, count=10, tweet_mode='extended')
-        tweets = api.user_timeline(screen_name='elonmusk', count=10, tweet_mode='extended')
         df = pd.DataFrame({
                 'tweet_id': [tweet.id for tweet in tweets],
                 'created_at': [tweet.created_at for tweet in tweets],
