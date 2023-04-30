@@ -1,3 +1,4 @@
 streamlit
 mindsdb-sdk
 tweepy
+streamlit-pandas-profiling
