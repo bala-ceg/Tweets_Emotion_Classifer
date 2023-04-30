@@ -3,6 +3,7 @@ import tweepy
 import re
 import mindsdb_sdk as mb
 import pandas as pd
+import os
 
 # Set up Tweepy API authentication
 # auth = tweepy.OAuthHandler("qgMcGcUTzTzAmPRmLeVEZAQYQ","Eb6xcOHKYp7di4Oqm77RxAzswQC9MxwLMzcJwvBYlsV5T1B00p")
