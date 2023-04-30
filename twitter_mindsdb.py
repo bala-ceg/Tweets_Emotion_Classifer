@@ -1,7 +1,7 @@
 import streamlit as st
 import tweepy
 import re
-import mindsdb_sdk as mb
+import mindsdb_sdk as mdb
 import pandas as pd
 import os
 
