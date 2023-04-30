@@ -55,8 +55,8 @@ if st.button('Predict emotions'):
         st.write(f'Predicting emotions for the latest {len(tweets)} tweets from @{username}...')
         df2 = predict_from_mindsdb(df)
         df = pd.concat([df, df2], axis=1)
-        df = df.rename(columns={'text': 'tweet','sentiment': 'tweet sentiment'}) 
-        df = df['tweet','tweet sentiment']
+        df = df.rename(columns={'text': 'tweet','sentiment': 'tweet_sentiment'}) 
+        df = df['tweet','tweet_sentiment']
         st.dataframe(df) 
     except Exception as e:
         st.error(f'Error fetching tweets: {e}, perhaps a wrong user name')
