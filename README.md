@@ -1,5 +1,9 @@
 # Tweets_Emotion_Classifer
 
+![P3_Hashnode](https://user-images.githubusercontent.com/70808619/235376794-c947ebd6-795b-4b0c-af3a-8aa08ca76a71.png)
+
+
+
 This is  Streamlit app powered by MindsDB that allows you to enter a Twitter username and predicts the emotions (positive, negative, or neutral) for the last 10 tweets from that user.
 
 ## How to use
