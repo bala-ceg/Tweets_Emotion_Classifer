@@ -4,7 +4,7 @@ import re
 import mindsdb_sdk as mdb
 import pandas as pd
 import os
-from streamlit_pandas_profiling import st_pandas_profiling
+from streamlit_pandas_profiling import st_profile_report
 
 # Set up Tweepy API authentication
 # auth = tweepy.OAuthHandler("qgMcGcUTzTzAmPRmLeVEZAQYQ","Eb6xcOHKYp7di4Oqm77RxAzswQC9MxwLMzcJwvBYlsV5T1B00p")
@@ -60,7 +60,7 @@ if st.button('Predict emotions'):
         st.write(f'Predicting emotions for {len(tweets)} tweets from @{username}...')
         df2 = predict_from_mindsdb(df)
         df = pd.concat([df, df2], axis=1)
-        st_pandas_profiling(df.style.set_table_styles([{'selector': 'th', 'props': [('font-size', '16pt')]}]), use_container_width=True)
+        st_profile_report(df.style.set_table_styles([{'selector': 'th', 'props': [('font-size', '16pt')]}]), use_container_width=True)
         st.write(f'Emotions predicted: {df}')      
     except Exception as e:
         st.error(f'Error fetching tweets: {e}, perhaps a wrong user name')
